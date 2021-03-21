@@ -1,4 +1,5 @@
 import bisect
+from dataclasses import dataclass
 import typing as tp
 
 from pypeln import utils as pypeln_utils
@@ -9,7 +10,8 @@ from ..worker import ProcessFn, Worker
 from .to_stage import to_stage
 
 
-class Ordered(tp.NamedTuple):
+@dataclass(frozen=True)
+class Ordered:
     def __call__(self, worker: Worker, **kwargs):
 
         elems = []

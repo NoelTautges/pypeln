@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import sys
 import time
 import traceback
@@ -12,7 +13,8 @@ from . import utils
 T = tp.TypeVar("T")
 
 
-class PipelineException(tp.NamedTuple, BaseException):
+@dataclass(frozen=True)
+class PipelineException(BaseException):
     exception: tp.Optional[tp.Type[BaseException]]
     trace: str
 

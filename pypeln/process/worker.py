@@ -25,7 +25,8 @@ class ProcessFn(pypeln_utils.Protocol):
         ...
 
 
-class StageParams(tp.NamedTuple):
+@dataclass(frozen=True)
+class StageParams:
     input_queue: IterableQueue
     output_queues: OutputQueues
     namespace: utils.Namespace
@@ -45,7 +46,8 @@ class StageParams(tp.NamedTuple):
             self.namespace.active_workers -= 1
 
 
-class WorkerInfo(tp.NamedTuple):
+@dataclass(frozen=True)
+class WorkerInfo:
     index: int
 
 

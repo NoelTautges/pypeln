@@ -1,4 +1,5 @@
 import asyncio
+from dataclasses import dataclass
 import time
 import typing as tp
 
@@ -11,7 +12,8 @@ from ..stage import Stage
 from ..worker import ProcessFn, Worker
 
 
-class FromIterable(tp.NamedTuple):
+@dataclass(frozen=True)
+class FromIterable:
     iterable: tp.Union[tp.Iterable, tp.AsyncIterable]
     maxsize: int
 

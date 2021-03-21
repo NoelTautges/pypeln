@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from dataclasses import dataclass
 import inspect
 import sys
 import typing as tp
@@ -21,7 +22,8 @@ class NoLock(Exception):
     pass
 
 
-class Element(tp.NamedTuple):
+@dataclass(frozen=True)
+class Element:
     index: tp.Tuple[int, ...]
     value: T
 

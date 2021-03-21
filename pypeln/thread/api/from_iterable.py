@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import typing as tp
 
 from pypeln import utils as pypeln_utils
@@ -7,7 +8,8 @@ from ..stage import Stage
 from ..worker import ProcessFn, Worker
 
 
-class FromIterable(tp.NamedTuple):
+@dataclass(frozen=True)
+class FromIterable:
     iterable: tp.Iterable
     maxsize: int
 

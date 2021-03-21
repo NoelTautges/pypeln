@@ -15,7 +15,8 @@ from dataclasses import dataclass
 from . import utils
 
 
-class WorkerInfo(tp.NamedTuple):
+@dataclass(frozen=True)
+class WorkerInfo:
     index: int
 
 
@@ -118,7 +119,8 @@ class ApplyProcess(ProcessFn, Applicable):
                 yield from self.apply(worker, x, **kwargs)
 
 
-class StageStatus(tp.NamedTuple):
+@dataclass(frozen=True)
+class StageStatus:
     """
     Object passed to various `on_done` callbacks. It contains information about the stage in case book keeping is needed.
     """

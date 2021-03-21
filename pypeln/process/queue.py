@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import multiprocessing
 from multiprocessing.queues import Empty, Queue
 import sys
@@ -13,7 +14,8 @@ from . import utils
 T = tp.TypeVar("T")
 
 
-class PipelineException(tp.NamedTuple, BaseException):
+@dataclass(frozen=True)
+class PipelineException(BaseException):
     exception: tp.Optional[tp.Type[BaseException]]
     trace: str
 
